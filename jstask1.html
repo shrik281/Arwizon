@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js1</title>
+</head>
+<body>
+<form action="http://www.google.com" style="text-align: center; "  >
+	<fieldset>
+		<legend>Login</legend>
+	<label for="fname">First Name</label>
+	<input type="text" id="txt1" name="fname" placeholder="first name" onfocus="focusMeth(this)" onblur="blurMeth(this)" >
+	<span id="txt2"></span><br><br>
+	<label for="lname">Last Name</label>
+	<input type="text" name="lname" id="txt3" placeholder="last name" onfocus="focusMeth(this)" onblur="blurMeth(this)" >
+	<span id="txt4"></span><br><br>
+	Full Name<input type="text" name="flname" id="txt5" readonly="flname"><br><br>
+	<label for="password">Password</label>
+	<input type="password"  name="password" placeholder="Create a Password" onfocus="focusMeth(this)" onblur="blurMeth(this)" ><br><br>
+	Gender: <input type="radio" id="r1" name="gender" value="male">Male
+		    <input type="radio" id="r2" name="gender" value="female">Female 
+		    <span id="r3"></span><br><br>
+	<label>Language Known:</label>
+    <input type="checkbox" name="Language1" value="English">
+    <label for="Language1">English</label>
+    <input type="checkbox" name="Language2" value="Hindi">
+    <label for="Language2">Hindi</label>
+    <input type="checkbox" name="Language3" value="Kannada">
+    <label for="Language3">Kannada</label>
+    <span id="c1"></span> <br><br>
+    <label>Branch</label>
+    <input  list="Branch" id="d2" name="Branch" onfocus="focusMeth(this)" onblur="blurMeth(this)" >
+    <datalist id="Branch" >
+    	<option value="CSE">CSE</option>
+    	<option value="ECE">ECE</option>
+    	<option value="ISE">ISE</option>
+    </datalist>
+    <span id="d1"></span><br><br>
+
+	<input type="button" name="submit" value="submit" onclick="clickme()" >
+	</fieldset>
+</form>
+<script type="text/javascript">
+	function clickme(){
+		document.querySelector("#txt2").textContent="You Entered "+document.querySelector("#txt1").value;
+		document.querySelector("#r3").textContent="Gender is "+document.querySelector("input[type=radio]:checked").value;
+		var arr=document.querySelectorAll("input[type=checkbox]:checked");
+		var str="Known Language ";
+		for(var i=0;i<arr.length;i++){
+			str = str+" "+arr[i].value;
+			document.querySelector("#c1").textContent=str;
+		}
+		document.querySelector("#d1").textContent="You Selected "+document.querySelector("#d2").value;
+		document.querySelector("#txt4").textContent=document.querySelector("#txt3").value;
+		var fn=document.querySelector("#txt1").value;
+		var ln=document.querySelector("#txt3").value;
+		var fln=document.querySelector("#txt5");
+		fln.value=fn+ " "+ln;
+		fln.style.color="blue";
+
+	}
+	function focusMeth(obj){
+			obj.style.backgroundColor="yellow";
+			obj.style.color="red";
+	}
+	function blurMeth(obj){
+			obj.style.backgroundColor="white";
+	}
+		var val=document.querySelectorAll("span");
+		for( var i=0;i<val.length;i++){
+			val[i].style.color="blue";
+		}
+	function formsub(){
+		var sub=document.querySelectorAll("span");
+		for (var i = 0; i <sub.length; i++) {
+				if(sub[i].textContent!=""){
+				  return false;
+				}else{
+					continue;
+				}
+			}
+			return true;
+		}
+	</script>
+</body>
+
+</html>
